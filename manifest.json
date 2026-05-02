@@ -1,0 +1,97 @@
+{
+  "id": "hacker_news",
+  "name": "Hacker News",
+  "version": "0.1.0",
+  "description": "Display the top Hacker News story title and score on your board.",
+  "author": "FiestaBoard Team",
+  "icon": "newspaper",
+  "category": "data",
+  "repository": "https://github.com/Fiestaboard/fiestaboard-plugin--hacker-news",
+  "documentation": "README.md",
+  "min_refresh_seconds": 300,
+  "settings_schema": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "title": "Enabled",
+        "default": false
+      },
+      "story_index": {
+        "type": "integer",
+        "title": "Story Position",
+        "description": "Which story to display (1 = top story, 2 = second, etc.).",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 30
+      },
+      "feed": {
+        "type": "string",
+        "title": "Feed",
+        "description": "Which HN feed to display.",
+        "enum": [
+          "topstories",
+          "beststories",
+          "newstories",
+          "askstories",
+          "showstories"
+        ],
+        "default": "topstories"
+      },
+      "refresh_seconds": {
+        "type": "integer",
+        "title": "Refresh Interval (seconds)",
+        "description": "How often to fetch the top story.",
+        "default": 300,
+        "minimum": 60
+      }
+    },
+    "required": []
+  },
+  "variables": {
+    "groups": {
+      "story": {
+        "label": "Story"
+      }
+    },
+    "simple": {
+      "title": {
+        "description": "Story title (truncated to fit board)",
+        "type": "string",
+        "max_length": 22,
+        "group": "story",
+        "example": "Ask HN: What are you"
+      },
+      "score": {
+        "description": "Story score (upvotes)",
+        "type": "integer",
+        "max_length": 6,
+        "group": "story",
+        "example": "1234"
+      },
+      "comments": {
+        "description": "Number of comments",
+        "type": "integer",
+        "max_length": 5,
+        "group": "story",
+        "example": "342"
+      },
+      "author": {
+        "description": "Story author username",
+        "type": "string",
+        "max_length": 15,
+        "group": "story",
+        "example": "pg"
+      }
+    }
+  },
+  "screenshots": [
+    {
+      "src": "docs/board-display.png",
+      "alt": "Hacker News displayed on a Vestaboard",
+      "caption": "Example board output using the default template",
+      "primary": true
+    }
+  ],
+  "api_docs": "https://github.com/HackerNews/API"
+}
