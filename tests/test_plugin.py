@@ -101,6 +101,17 @@ class TestHackerNewsPlugin:
         for field in ("id", "name", "version"):
             assert field in m
 
+    def test_manifest_includes_demo_page(self):
+        manifest_path = Path(__file__).parent.parent / "manifest.json"
+        with open(manifest_path) as f:
+            m = json.load(f)
+        assert "demo" in m
+        assert isinstance(m["demo"], dict)
+        assert m["demo"].get("name") == "Hacker News Demo"
+        assert m["demo"].get("device_type") == "flagship"
+        assert isinstance(m["demo"].get("template"), list)
+        assert len(m["demo"].get("line_metadata", [])) == len(m["demo"].get("template", []))
+
     @patch("plugins.hacker_news.requests.get")
     def test_fetch_data_success(self, mock_get, configured_plugin):
         ids_response = Mock()
