@@ -1,7 +1,7 @@
 {
   "id": "hacker_news",
   "name": "Hacker News",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Display the top Hacker News story title and score on your board.",
   "author": "FiestaBoard Team",
   "icon": "newspaper",
@@ -94,24 +94,65 @@
     }
   ],
   "demo": {
-    "name": "Hacker News Demo",
-    "device_type": "flagship",
-    "template": [
-      "HACKER NEWS",
-      "{{title}}",
-      "SCORE {{score}}  BY {{author}}",
-      "COMMENTS {{comments}}",
-      "{white}{white}{white}{white}{white}{white}{white}{white}{white}{white}",
-      "{white}{white}{white}{white}{white}{white}{white}{white}{white}{white}"
-    ],
-    "line_metadata": [
-      {"alignment": "left", "wrap": false},
-      {"alignment": "left", "wrap": false},
-      {"alignment": "left", "wrap": false},
-      {"alignment": "left", "wrap": false},
-      {"alignment": "left", "wrap": false},
-      {"alignment": "left", "wrap": false}
-    ]
+    "flagship": {
+      "name": "Hacker News Demo",
+      "template": [
+        "HACKER NEWS",
+        "{{title}}",
+        "SCORE {{score}}  BY {{author}}",
+        "COMMENTS {{comments}}",
+        "{white}{white}{white}{white}{white}{white}{white}{white}{white}{white}",
+        "{white}{white}{white}{white}{white}{white}{white}{white}{white}{white}"
+      ],
+      "line_metadata": [
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        }
+      ]
+    },
+    "note": {
+      "name": "Hacker News (Note)",
+      "template": [
+        "HACKER NEWS",
+        "{{title}}",
+        "SCORE {{score}}"
+      ],
+      "line_metadata": [
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": true
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        }
+      ]
+    }
   },
   "api_docs": "https://github.com/HackerNews/API"
 }
