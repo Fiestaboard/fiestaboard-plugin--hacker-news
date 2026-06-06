@@ -49,10 +49,10 @@ class HackerNewsPlugin(PluginBase):
             story_response.raise_for_status()
             story = story_response.json()
 
-            title = str(story.get("title", ""))[:22]
+            title = str(story.get("title", ""))
             score = int(story.get("score", 0))
             comments = int(story.get("descendants", 0))
-            author = str(story.get("by", "unknown"))[:15]
+            author = str(story.get("by", "unknown"))
 
             return PluginResult(
                 available=True,
