@@ -93,6 +93,28 @@
       "primary": true
     }
   ],
+  "teaser": "{64}HN TOP STORIES",
+  "previews": [
+    {
+      "device_type": "flagship",
+      "rows": [
+        "{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}{64}",
+        "HACKER NEWS",
+        "SHOW HN: A SPLIT-FLAP",
+        "DRIVER IN RUST",
+        "SCORE 342  BY TLB",
+        "COMMENTS 128"
+      ]
+    },
+    {
+      "device_type": "note",
+      "rows": [
+        "HACKER NEWS",
+        "SHOW HN: RUST",
+        "SCORE 342"
+      ]
+    }
+  ],
   "demo": {
     "flagship": {
       "name": "Hacker News Demo",
