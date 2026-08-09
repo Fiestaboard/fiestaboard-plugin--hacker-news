@@ -106,11 +106,23 @@ class TestHackerNewsPlugin:
         with open(manifest_path) as f:
             m = json.load(f)
         assert "demo" in m
-        assert isinstance(m["demo"], dict)
-        assert m["demo"].get("name") == "Hacker News Demo"
-        assert m["demo"].get("device_type") == "flagship"
-        assert isinstance(m["demo"].get("template"), list)
-        assert len(m["demo"].get("line_metadata", [])) == len(m["demo"].get("template", []))
+        demo = m["demo"]
+        assert isinstance(demo, dict)
+        # Demo pages are keyed by device type, e.g. {"flagship": {...}, "note": {...}}.
+        assert demo, "manifest declares no demo pages"
+        assert set(demo) <= {"flagship", "note"}, f"unknown demo device types: {set(demo) - {'flagship', 'note'}}"
+
+        assert "flagship" in demo
+        assert demo["flagship"].get("name") == "Hacker News Demo"
+
+        for device_type, entry in demo.items():
+            assert isinstance(entry, dict), f"demo[{device_type}] is not an object"
+            assert entry.get("name"), f"demo[{device_type}] is missing a name"
+            template = entry.get("template")
+            assert isinstance(template, list) and template, f"demo[{device_type}] has no template"
+            assert len(entry.get("line_metadata", [])) == len(template), (
+                f"demo[{device_type}] line_metadata length does not match template length"
+            )
 
     @patch("plugins.hacker_news.requests.get")
     def test_fetch_data_success(self, mock_get, configured_plugin):
